@@ -11,36 +11,36 @@ class DigitalHouseManager {
         listaCurso.add(curso)
     }
     fun excluirCurso(codigoCurso: Int) {
-        val curso = buscaCurso(codigoCurso)
-        cursos.remove(curso)
+        val curso = buscarCurso(codigoCurso)
+        listaCurso.remove(curso)
     }
 
     fun registrarProfessorAdjunto(nome: String, sobrenome: String,
                                   codigoProfessor: Int, quantidadeDeHoras: Int) {
-        val professorAdjunto = ProfessorAdjunto(quantidadeDeHoras, nome, sobrenome, codigoProfessor)
+        val professorAdjunto = ProfessorAdjunto(nome, sobrenome, 0, codigoProfessor, quantidadeDeHoras)
 
-        professores.add(professorAdjunto)
+        listaProfessores.add(professorAdjunto)
     }
 
     fun registrarProfessorTitular(nome: String, sobrenome: String ,
                                   codigoProfessor: Int, especialidade: String ){
-        val professorTitular = ProfessorTitular(especialidade, nome, sobrenome,  codigoProfessor)
+        val professorTitular = ProfessorTitular(nome, sobrenome, 0, codigoProfessor, especialidade)
     }
 
     fun excluirProfessor(codigoProfessor: Int) {
-        val professro = buscaProfessor(codigoProfessor)
-        professores.remove(professro)
+        val professor = buscarProfessor(codigoProfessor)
+        listaProfessores.remove(professor)
 
     }
 
     fun registrarAluno(nome: String , sobrenome: String , codigoAluno: Int){
         val aluno = Aluno(nome, sobrenome, codigoAluno )
-        alunos.add(aluno)
+        listaAlunos.add(aluno)
     }
 
     fun matricularAluno(codigoAluno: Int,  codigoCurso: Int){
         val aluno = buscarAluno(codigoAluno)
-        val curso = buscaCurso(codigoCurso)
+        val curso = buscarCurso(codigoCurso)
 
         var adicionou = false
         if (curso != null
@@ -49,30 +49,30 @@ class DigitalHouseManager {
         }
         if (adicionou){
             val matricula = Matricula(aluno!!, curso!!)
-            matriculas.add(matricula)
+            listaMatriculas.add(matricula)
             println("Matrícula realizada!")
         } else {
             println("Não foi possível realizar a matrícula, pois não há vagas")
         }
     }
 
-    private fun buscaCurso(codigoCurso: Int): Curso? {
-        cursos.forEach {
-            it.codigoDoCurso = codigoCurso
+    private fun buscarCurso(codigoCurso: Int): Curso? {
+        listaCurso.forEach {
+            it.codigoCurso = codigoCurso
             return it
         }
         return null
     }
-    private fun buscaProfessor(codigoProfessor: Int): Professro? {
-        professores.forEach {
-            it.codigoDoProfessor = codigoProfessor
+    private fun buscarProfessor(codigoProfessor: Int): Professor? {
+        listaProfessores.forEach {
+            it.codigoProfessor = codigoProfessor
             return it
         }
         return null
     }
 
     private fun buscarAluno(codigoAluno: Int): Aluno? {
-        alunos.forEach {
+        listaAlunos.forEach {
             it.codigoAluno = codigoAluno
             return it
         }

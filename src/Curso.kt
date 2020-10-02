@@ -1,7 +1,7 @@
 class Curso(
-    val nomeDoCurso: String,
-    val codigoCurso: Int,
-    val quantidadeMaxAluno: Int
+        val nomeDoCurso: String,
+        var codigoCurso: Int,
+        val quantidadeMaxAluno: Int
 ) {
     val professorTitular: ProfessorTitular? = null
     val professorAdjunto: ProfessorAdjunto? = null
