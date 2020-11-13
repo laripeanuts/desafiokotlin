@@ -1,4 +1,4 @@
-class Curso(
+data class Curso(
         val nomeDoCurso: String,
         var codigoCurso: Int,
         val quantidadeMaxAluno: Int

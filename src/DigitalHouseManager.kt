@@ -1,4 +1,4 @@
-class DigitalHouseManager {
+data class DigitalHouseManager {
 
     val listaAlunos = arrayListOf<Aluno>()
     val listaProfessores = arrayListOf<Professor>()

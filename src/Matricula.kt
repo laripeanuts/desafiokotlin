@@ -1,6 +1,6 @@
 import java.time.LocalDateTime
 
-class Matricula(
+data class Matricula(
         val aluno: Aluno,
         val curso: Curso,
 ) {
